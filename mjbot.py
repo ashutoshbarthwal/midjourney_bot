@@ -8,8 +8,8 @@ from concurrent.futures import ThreadPoolExecutor
 
 MAX_THREADS = 100
 
-def check_file_exists_else_create(file_path,filename,data=None,mode='w',url=None):
-    if os.path.exists(file_path+'/'+filename) and os.path.isfile(file_path+'/'+filename):
+def check_file_exists_else_create(file_path,filename,data=None,mode='w',url=None,ignoreCheck=False):
+    if not ignoreCheck and os.path.exists(file_path+'/'+filename) and os.path.isfile(file_path+'/'+filename):
         print('File already exists.')
     else:
         if url:
@@ -60,16 +60,19 @@ json_string = script.contents[0]
 json_object = json.loads(json_string)
 
 # Format datetime as 'YYYYMMDD'
-# directory = now.strftime('%Y%m%d')
+data_str = now.strftime('%Y%m%d%')
+data_time_str = now.strftime('%Y%m%d%H%M')
 directory = 'midjourneyRecent'
+
+print(data_time_str)
 
 # Create the save directory if it doesn't exist
 os.makedirs(directory, exist_ok=True)
 
 # Specify output file name
-output_file = directory+'/response.json'
+filename_main= 'response - '+data_time_str+'.json'
 
-check_file_exists_else_create(directory,'response.json',json_string)
+check_file_exists_else_create(directory,filename_main,json_string)
 
 # Access the desired data from the JSON object
 data = json_object['props']['pageProps']['jobs']
