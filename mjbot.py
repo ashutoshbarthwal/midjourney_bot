@@ -15,9 +15,12 @@ def check_file_exists_else_create(file_path,filename,data=None,mode='w',url=None
         if url:
             response = requests.get(url)
             data = response.content
-        with open(file_path+'/'+filename, mode) as f:
-            f.write(data)
-        print(f'Downloaded variable {file_path} and saved as {filename}')
+        if data:
+            with open(file_path+'/'+filename, mode) as f:
+                f.write(data)
+            print(f'Downloaded variable {file_path} and saved as {filename}')
+        else:
+            print(f'No data to write to {file_path}/{filename}')
 
 def processRecord(record):
     print("Processing record: "+record['id'])
