@@ -1,0 +1,78 @@
+{
+    "_job_type": "diffusion",
+    "_parsed_params": {
+        "creative": false,
+        "fast": false,
+        "hd": false,
+        "niji": false,
+        "no": [],
+        "repeat": 3,
+        "style": "",
+        "stylize": 750,
+        "test": false,
+        "testp": false,
+        "tile": false,
+        "upanime": false,
+        "upbeta": false,
+        "uplight": false,
+        "version": 5,
+        "vibe": false,
+        "video": false
+    },
+    "_service": "main",
+    "avatar_job_id": null,
+    "avatar_job_index": null,
+    "cover_job_id": null,
+    "cover_job_index": null,
+    "current_status": "completed",
+    "enqueue_time": "2023-06-18 08:26:03.072726",
+    "event": {
+        "height": 1024,
+        "textPrompt": [
+            "an famale pixar charactor"
+        ],
+        "imagePrompts": [
+            "https://s.mj.run/QGW_sVdAoYk",
+            "https://s.mj.run/QKY53GaT9BQ",
+            "https://s.mj.run/Jz13R9uQqZQ"
+        ],
+        "width": 1024,
+        "batchSize": 4,
+        "textPromptWeights": [
+            1
+        ],
+        "seedImageURL": null,
+        "eventType": "imagine",
+        "test": false
+    },
+    "flagged": false,
+    "grid_id": null,
+    "grid_num": null,
+    "guild_id": "1118533136322658304",
+    "hidden": false,
+    "hot_score": "1314.2706016",
+    "id": "ea6d3cea-73f3-4c2f-8e1f-27db219fc95e",
+    "image_paths": [
+        "https://cdn.midjourney.com/ea6d3cea-73f3-4c2f-8e1f-27db219fc95e/0_0.png",
+        "https://cdn.midjourney.com/ea6d3cea-73f3-4c2f-8e1f-27db219fc95e/0_1.png",
+        "https://cdn.midjourney.com/ea6d3cea-73f3-4c2f-8e1f-27db219fc95e/0_2.png",
+        "https://cdn.midjourney.com/ea6d3cea-73f3-4c2f-8e1f-27db219fc95e/0_3.png"
+    ],
+    "is_published": true,
+    "low_priority": null,
+    "metered": null,
+    "mod_hidden": false,
+    "parent_grid": null,
+    "parent_id": null,
+    "platform": "discord",
+    "platform_channel": "Untracked",
+    "platform_message_id": "1119906178546270268",
+    "platform_thread_id": null,
+    "prompt": "an famale pixar charactor",
+    "type": "grid",
+    "user_id": "259de312-6502-49d0-b2fa-dedd4d5960d7",
+    "username": "kevinlee",
+    "full_command": "<https://s.mj.run/QGW_sVdAoYk> <https://s.mj.run/QKY53GaT9BQ> <https://s.mj.run/Jz13R9uQqZQ> an famale pixar charactor --repeat 3  --s 750 --v 5",
+    "reference_job_id": null,
+    "reference_image_num": null
+}

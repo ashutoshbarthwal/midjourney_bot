@@ -23,24 +23,43 @@ def check_file_exists_else_create(file_path,filename,data=None,mode='w',url=None
             print(f'No data to write to {file_path}/{filename}')
 
 def processRecord(record):
-    print("Processing record: "+record['id'])
-    main_path = directory+'/'+record['id']+'/main'
-    os.makedirs(main_path, exist_ok=True)
-    for image_url in record['image_paths']:
-        image_name = image_url.split('/')
-        check_file_exists_else_create(main_path,image_name[-1],url=image_url,mode='wb')
-    
-    variations = directory+'/'+record['id']+'/'+record['event']['eventType']
-    os.makedirs(variations, exist_ok=True)
-    image_path = record['event']["seedImageURL"]
+    try:
+        print("Processing record: "+record['id'])
+        main_path = directory+'/'+record['id']+'/main'
+        os.makedirs(main_path, exist_ok=True)
+        for image_url in record['image_paths']:
+            image_name = image_url.split('/')
+            check_file_exists_else_create(main_path,image_name[-1],url=image_url,mode='wb')
+        
+        variations = directory+'/'+record['id']+'/'+record['event']['eventType']
+        os.makedirs(variations, exist_ok=True)
+        image_path = record['event']["seedImageURL"]
 
-    for i in range(4):
-        var_image_name = '0_'+str(i)+'.png'
-        var_image_path = re.sub(r'0_[0-9].png',var_image_name , image_path)
-        check_file_exists_else_create(variations,var_image_name,url=var_image_path,mode='wb')
-    
-    check_file_exists_else_create(main_path,'promt.txt',record['prompt'])
-    check_file_exists_else_create(main_path,'record.json',json.dumps(record))
+        if image_path:
+            for i in range(4):
+                var_image_name = '0_'+str(i)+'.png'
+                var_image_path = re.sub(r'0_[0-9].png',var_image_name , image_path)
+                check_file_exists_else_create(variations,var_image_name,url=var_image_path,mode='wb')
+        else:
+            print('No image path found')
+            print('Fetching Imagine Seeds')
+            # fetching seeds
+            seed_images = record['event']["imagePrompts"]
+            seed_counter = 0
+            for seed_image in seed_images:
+                var_image_name = '0_'+str(seed_counter)+'.png'
+                check_file_exists_else_create(variations,var_image_name,url=seed_image,mode='wb')
+        
+        check_file_exists_else_create(main_path,'promt.txt',record['prompt'])
+        check_file_exists_else_create(main_path,'record.json',json.dumps(record))
+    except Exception as e:
+        print('-------Exception Start------------')
+        print(e)
+        print('Error processing record: '+record['id'])
+        print('Skipping record: '+record['id'])
+        print('record Id : '+record['id']+' Data: '+json.dumps(record))
+        print('---------Exception End ----------')
+        pass
 
 # Get current datetime
 now = datetime.now()

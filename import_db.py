@@ -11,7 +11,7 @@ DB_NAME = "midjourney"
 DB_USER = "postgres"
 DB_PASSWORD = "1234"
 DB_HOST = "0.tcp.in.ngrok.io"
-DB_PORT = "18369"
+DB_PORT = "15528"
 
 # Configure a PostgresSQL database and initialize SQLAlchemy engine, session and base
 DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
